@@ -4,13 +4,13 @@
       "id": 1,
       "name": "Woody",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-      "likes": 41
+      "likes": 43
     },
     {
       "id": 2,
       "name": "Buzz Lightyear",
       "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-      "likes": 90001
+      "likes": 90002
     },
     {
       "id": 3,
@@ -41,18 +41,6 @@
       "name": "Hamm",
       "image": "https://cdn140.picsart.com/244090226021212.png?r1024x1024",
       "likes": 4
-    },
-    {
-      "name": "Benny",
-      "image": "https://files.list.co.uk/images/2018/08/02/bh1-LST306123.jpg",
-      "likes": 0,
-      "id": 8
-    },
-    {
-      "name": "karina",
-      "image": "image",
-      "likes": 0,
-      "id": 9
     }
   ]
 }

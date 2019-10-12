@@ -1,7 +1,6 @@
 const addBtn = document.querySelector('#new-toy-btn')
 const toyForm = document.querySelector('.container')
 let addToy = false
-let toysArray = []
 
 addBtn.addEventListener('click', () => {
   // hide & seek with the form
@@ -12,6 +11,35 @@ addBtn.addEventListener('click', () => {
     toyForm.style.display = 'none'
   }
 })
+
+// 1. fetch request
+// 2. create elements for the data we get from the response.
+
+pageLoad()
+
+function pageLoad(){
+  fetch('http://localhost:3000/toys')
+  .then(resp => resp.json())
+  .then(toys => {
+    toys.forEach(toy => {
+      createElement(toy)
+    })
+  })
+}
+
+// innerHTML Approach to generating Elements
+
+function createElement(toy){
+  toyCollection.innerHTML += `<div class="card">
+    <h2>${toy.name}</h2>
+    <img src=${toy.image} class="toy-avatar" />
+    <p>${toy.likes}</p>
+    <button data-id=${toy.id} class="like-btn">Like <3</button>
+  </div>`
+
+}
+
+//Event Delegation 
 
 const toyCollection = document.querySelector('#toy-collection')
 toyCollection.addEventListener('click', function(e){
@@ -43,7 +71,6 @@ function increaseLikes(toy, element, newLike){
 
 }
 
-
 const addToyForm = document.querySelector(".add-toy-form")
 addToyForm.addEventListener('submit', addToyToStuff)
 
@@ -68,35 +95,8 @@ function addToyToStuff(e){
     createElement(toy)
   })
 }
-// 1. fetch request
-// 2. create elements for the data we get from the response.
 
-pageLoad()
-
-function pageLoad(){
-  fetch('http://localhost:3000/toys')
-  .then(resp => resp.json())
-  .then(toys => {
-    // toysArray = toys
-    toys.forEach(toy => {
-      createElement(toy)
-    })
-  })
-}
-
-// innerHTML way
-
-function createElement(toy){
-  toyCollection.innerHTML += `<div class="card">
-    <h2>${toy.name}</h2>
-    <img src=${toy.image} class="toy-avatar" />
-    <p>${toy.likes}</p>
-    <button data-id=${toy.id} class="like-btn">Like <3</button>
-  </div>`
-
-}
-
-
+//Creating Element and Appending to DOM approach
 
 // function createElement(toy){
 //     const div = document.createElement('div')
@@ -112,16 +112,13 @@ function createElement(toy){
 //         button.className = "like-btn"
 //         button.innerText = "Like <3"
 //         button.addEventListener('click', function(e){
-          // debugger
           // toy.likes = toy.likes + 1
         //   increaseLikes(toy, p)
         // })
         // button.setAttribute('data-id', toy.id)
       // div.append(h2,img,p,button)
       // toyCollection.append(div)
-}
-
-// YOUR CODE HERE
+// }
 
 // function increaseLikes(toy, element){
 //   toy.likes = toy.likes + 1
@@ -140,5 +137,4 @@ function createElement(toy){
 //   .then(toy => {
 //     element.innerText = toy.likes
 //   })
-
 // }
